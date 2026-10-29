@@ -1,0 +1,331 @@
+/* ======================================
+   VALCRI - NAVBAR
+====================================== */
+
+.valcri-navbar {
+  height: 104px;
+  background: #EAE4DE;
+  position: relative;
+  z-index: 100;
+}
+
+.valcri-navbar-inner {
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 6vw, 90px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+/* LOGO */
+
+.valcri-brand {
+  width: 150px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.valcri-brand img {
+  width: 100%;
+  height: 87px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+/* MENÚ ESCRITORIO */
+
+.valcri-desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.8vw, 40px);
+}
+
+.valcri-desktop-nav a {
+  color: #013280;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 0;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+.valcri-desktop-nav a:hover {
+  opacity: 0.65;
+}
+
+/* ICONOS */
+
+.valcri-navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+}
+
+.valcri-icon-button,
+.valcri-menu-toggle {
+  border: none;
+  background: transparent;
+  color: #013280;
+  cursor: pointer;
+  padding: 5px;
+  display: grid;
+  place-items: center;
+}
+
+.valcri-icon-button svg {
+  width: 23px;
+  height: 23px;
+}
+
+.valcri-icon-button:hover {
+  opacity: 0.65;
+}
+
+/* BUSCADOR */
+
+.valcri-search-panel {
+  position: absolute;
+  top: 100%;
+  right: clamp(20px, 6vw, 90px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px #001b441c;
+  z-index: 1100;
+}
+
+.valcri-search-panel input {
+  width: min(260px, 60vw);
+  border: none;
+  outline: none;
+  color: #013280;
+  font-size: 14px;
+}
+
+.valcri-search-panel button {
+  border: none;
+  background: none;
+  color: #013280;
+  cursor: pointer;
+}
+
+/* HAMBURGUESA */
+
+.valcri-menu-toggle {
+  display: none;
+  width: 36px;
+  height: 36px;
+  position: relative;
+  z-index: 1200;
+}
+
+.valcri-menu-toggle span {
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  background: #013280;
+  border-radius: 2px;
+
+  transition:
+    transform 0.4s ease,
+    opacity 0.3s ease;
+}
+
+.valcri-menu-toggle span:nth-child(1) {
+  transform: translateY(-7px);
+}
+
+.valcri-menu-toggle span:nth-child(3) {
+  transform: translateY(7px);
+}
+
+.valcri-menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.valcri-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.valcri-menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+/* MENÚ MOBILE - OCULTO EN ESCRITORIO */
+
+.valcri-mobile-menu {
+  display: none;
+}
+
+/* ======================================
+   TABLET Y MOBILE
+====================================== */
+
+@media (max-width: 850px) {
+  .valcri-navbar {
+    height: 86px;
+  }
+
+  .valcri-navbar-inner {
+    padding: 0 22px;
+  }
+
+  .valcri-brand {
+    width: 120px;
+    position: relative;
+    z-index: 1100;
+  }
+
+  .valcri-brand img {
+    height: 75px;
+  }
+
+  .valcri-desktop-nav {
+    display: none;
+  }
+
+  .valcri-navbar-actions {
+    gap: 9px;
+  }
+
+  .valcri-menu-toggle {
+    display: grid;
+  }
+
+  /* VENTANA COMPLETA */
+
+  .valcri-mobile-menu {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    background: #EAE4DE;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1050;
+
+    transform: translateY(-100%);
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+      transform 0.8s cubic-bezier(0.76, 0, 0.24, 1),
+      visibility 0s linear 0.8s;
+  }
+
+  .valcri-mobile-menu.is-open {
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+
+    transition:
+      transform 0.8s cubic-bezier(0.76, 0, 0.24, 1),
+      visibility 0s;
+  }
+
+  /* ENLACES CENTRADOS */
+
+  .valcri-mobile-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 32px;
+    padding: 25px;
+  }
+
+  .valcri-mobile-links a {
+    color: #013280;
+    text-decoration: none;
+    text-align: center;
+    font-size: clamp(28px, 7vw, 42px);
+    font-weight: 600;
+    line-height: 1.2;
+
+    opacity: 0;
+    transform: translateY(25px);
+
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+  }
+
+  .valcri-mobile-menu.is-open .valcri-mobile-links a {
+    opacity: 1;
+    transform: translateY(0);
+
+    transition-delay: calc(0.25s + var(--link-index) * 0.09s);
+  }
+
+  .valcri-mobile-links a:hover {
+    opacity: 0.6;
+  }
+
+  /* TEXTO INFERIOR */
+
+  .valcri-mobile-footer {
+    position: absolute;
+    bottom: 35px;
+    left: 0;
+    width: 100%;
+
+    text-align: center;
+    color: #013280;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .valcri-mobile-menu.is-open .valcri-mobile-footer {
+    opacity: 0.6;
+    transition-delay: 0.5s;
+  }
+}
+
+/* CELULARES PEQUEÑOS */
+
+@media (max-width: 420px) {
+  .valcri-navbar-actions {
+    gap: 4px;
+  }
+
+  .valcri-icon-button svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .valcri-mobile-links {
+    gap: 28px;
+  }
+}
+
+/* ACCESIBILIDAD */
+
+@media (prefers-reduced-motion: reduce) {
+  .valcri-mobile-menu,
+  .valcri-mobile-links a,
+  .valcri-mobile-footer,
+  .valcri-menu-toggle span {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+}
