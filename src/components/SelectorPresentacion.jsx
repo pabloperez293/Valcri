@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Minus, Plus } from "lucide-react";
-import { esPorPeso, opcionesPresentacion } from "../data/SelectorPresentaciones";
+import {
+  esPorPeso,
+  opcionesPresentacion,
+} from "../data/SelectorPresentaciones";
 import "../styles/SelectorPresentacion.css";
 
 const formato = (n) =>
@@ -19,13 +22,11 @@ export default function SelectorPresentacion({
   const opciones = opcionesPresentacion(producto);
   const [presentacion, setPresentacion] = useState("");
   const [cantidad, setCantidad] = useState(paso);
-  const [observaciones, setObservaciones] = useState("");
   const [mensaje, setMensaje] = useState("");
 
   useEffect(() => {
     setPresentacion("");
     setCantidad(paso);
-    setObservaciones("");
     setMensaje("");
   }, [producto.id, paso]);
 
@@ -41,6 +42,10 @@ export default function SelectorPresentacion({
       setMensaje("Elegí cómo querés que preparemos el producto.");
       return;
     }
+    if (producto.precio == null) {
+      setMensaje("Este producto todavía no tiene precio disponible.");
+      return;
+    }
     const seleccion = {
       productoId: producto.id,
       nombre: producto.nombre,
@@ -48,17 +53,15 @@ export default function SelectorPresentacion({
       presentacion,
       cantidad,
       unidad: producto.unidad,
-      observaciones: observaciones.trim(),
       precioReferencia: producto.precio,
-      subtotalReferencia:
-        producto.precio == null
-          ? null
-          : Math.round(producto.precio * cantidad * 100) / 100,
-      pendienteConfirmacion: true,
+      subtotalReferencia: Math.round(producto.precio * cantidad * 100) / 100,
+      pendienteConfirmacion: false,
     };
-    onSeleccionPreparada?.(seleccion);
+    const resultado = onSeleccionPreparada?.(seleccion);
     setMensaje(
-      "Preparación guardada para la prueba. No se realizó una compra.",
+      resultado === false
+        ? "No se pudo agregar este producto."
+        : "¡Agregado al carrito!",
     );
   };
 
@@ -86,8 +89,6 @@ export default function SelectorPresentacion({
           </option>
         ))}
       </select>
-      
-    
       <span className="valcri-preparacion-label">
         Cantidad ({porPeso ? "kg" : producto.unidad})
       </span>
@@ -114,13 +115,21 @@ export default function SelectorPresentacion({
       <small>
         Mínimo: {paso.toLocaleString("es-AR")} {producto.unidad}
       </small>
-   
+      <div className="valcri-preparacion-total">
+        Total:{" "}
+        <strong>
+          {producto.precio == null
+            ? "A confirmar"
+            : formato(producto.precio * cantidad)}
+        </strong>
+      </div>
       <button
         type="button"
         className="valcri-preparacion-agregar"
+        disabled={producto.precio == null}
         onClick={preparar}
       >
-        Guardar selección de prueba
+        Agregar al carrito
       </button>
       {mensaje && (
         <p role="status" className="valcri-preparacion-mensaje">

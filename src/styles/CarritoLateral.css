@@ -1,0 +1,204 @@
+.valcri-carrito-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: rgba(4, 20, 42, 0.52);
+  display: flex;
+  justify-content: flex-end;
+}
+.valcri-carrito-panel {
+  width: min(100%, 440px);
+  height: 100%;
+  height: 100dvh;
+  background: #f5f1ee;
+  display: flex;
+  flex-direction: column;
+  color: #172c4c;
+  box-shadow: -12px 0 35px #0002;
+  animation: valcri-carrito-entrada 0.24s ease;
+}
+@keyframes valcri-carrito-entrada {
+  from {
+    transform: translateX(30px);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.valcri-carrito-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 24px;
+  border-bottom: 1px solid #ddd5ce;
+}
+.valcri-carrito-header h2 {
+  margin: 0;
+  color: #013280;
+  font-size: 25px;
+}
+.valcri-carrito-header p {
+  margin: 6px 0 0;
+  color: #61718a;
+  font-size: 14px;
+}
+.valcri-carrito-cerrar {
+  border: 0;
+  background: none;
+  color: #013280;
+  cursor: pointer;
+  padding: 5px;
+}
+.valcri-carrito-lista {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px 20px;
+}
+.valcri-carrito-item {
+  display: flex;
+  gap: 13px;
+  padding: 16px 0;
+  border-bottom: 1px solid #e1d9d1;
+}
+.valcri-carrito-item > img {
+  width: 82px;
+  height: 92px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #eae4de;
+}
+.valcri-carrito-item-info {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 13px;
+}
+.valcri-carrito-item-info strong {
+  font-size: 15px;
+  color: #013280;
+}
+.valcri-carrito-item-info span {
+  color: #54647c;
+}
+.valcri-carrito-item-info b {
+  margin-top: 5px;
+  color: #013280;
+  font-size: 16px;
+}
+.valcri-carrito-item-controles {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 7px;
+}
+.valcri-carrito-item-controles button {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #c8d0da;
+  border-radius: 7px;
+  background: white;
+  color: #013280;
+  cursor: pointer;
+}
+.valcri-carrito-item-controles button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.valcri-carrito-item-controles output {
+  font-size: 12px;
+  min-width: 65px;
+  text-align: center;
+  white-space: nowrap;
+}
+.valcri-carrito-item-controles .valcri-carrito-eliminar {
+  margin-left: auto;
+  color: #aa2424;
+}
+.valcri-carrito-footer {
+  border-top: 1px solid #ddd5ce;
+  padding: 18px 24px 24px;
+  background: #fff;
+}
+.valcri-carrito-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  color: #013280;
+}
+.valcri-carrito-total strong {
+  font-size: 23px;
+}
+.valcri-carrito-footer p {
+  font-size: 12px;
+  line-height: 1.55;
+  color: #66748a;
+}
+.valcri-carrito-continuar {
+  width: 100%;
+  padding: 14px;
+  background: #013280;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.valcri-carrito-vaciar {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  border: 0;
+  background: transparent;
+  color: #a22;
+  cursor: pointer;
+}
+.valcri-carrito-vacio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 280px;
+  color: #63728a;
+  text-align: center;
+}
+.valcri-carrito-vacio button {
+  padding: 10px 18px;
+  border: 1px solid #013280;
+  background: transparent;
+  color: #013280;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.valcri-cart-count {
+  position: absolute;
+  top: -5px;
+  right: -6px;
+  min-width: 17px;
+  height: 17px;
+  border-radius: 10px;
+  background: #013280;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  padding: 0 3px;
+}
+.valcri-cart-button {
+  position: relative;
+}
+@media (prefers-reduced-motion: reduce) {
+  .valcri-carrito-panel {
+    animation: none;
+  }
+}
