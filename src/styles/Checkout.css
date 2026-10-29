@@ -1,0 +1,284 @@
+.valcri-checkout {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 42px 22px 90px;
+  color: #213451;
+  font-family: inherit;
+}
+.valcri-checkout h1 {
+  font-size: clamp(30px, 4vw, 44px);
+  color: #013280;
+  margin: 10px 0;
+}
+.valcri-checkout h2 {
+  color: #013280;
+  font-size: 22px;
+  margin: 0 0 22px;
+}
+.valcri-checkout-intro {
+  color: #64728a;
+  max-width: 650px;
+  line-height: 1.6;
+}
+.valcri-checkout-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #63718b;
+}
+.valcri-checkout-top button {
+  border: 0;
+  background: none;
+  color: #013280;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+.valcri-checkout-pasos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 28px 0 32px;
+}
+.valcri-checkout-pasos li {
+  padding: 12px 8px;
+  text-align: center;
+  background: #f5f1ee;
+  color: #758095;
+  border-radius: 9px;
+  font-size: 13px;
+}
+.valcri-checkout-pasos li.activo {
+  background: #013280;
+  color: white;
+  font-weight: 700;
+}
+.valcri-checkout-pasos li.listo {
+  background: #e2eaf5;
+  color: #013280;
+}
+.valcri-checkout-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 370px);
+  gap: 25px;
+  align-items: start;
+}
+.valcri-checkout-formulario,
+.valcri-checkout-resumen {
+  background: white;
+  border: 1px solid #e5dfda;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 7px 25px #1b34500a;
+}
+.valcri-checkout-formulario > label:not(.valcri-checkout-radio) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 18px 0;
+  color: #233a5b;
+}
+.valcri-checkout input:not([type="radio"]),
+.valcri-checkout textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px;
+  border: 1px solid #cbd1d9;
+  border-radius: 8px;
+  background: #fff;
+  font: inherit;
+  color: #1c2c47;
+}
+.valcri-checkout input:focus,
+.valcri-checkout textarea:focus {
+  outline: 2px solid #013280;
+  outline-offset: 1px;
+}
+.valcri-checkout-radio {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border: 1px solid #d7dce3;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 12px 0;
+  cursor: pointer;
+}
+.valcri-checkout-radio input {
+  accent-color: #013280;
+  margin-top: 4px;
+}
+.valcri-checkout-radio span {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.valcri-checkout-radio small,
+.valcri-checkout-item small {
+  color: #6c788c;
+  line-height: 1.4;
+}
+.valcri-checkout-principal {
+  width: 100%;
+  background: #013280;
+  color: #fff;
+  border: 0;
+  border-radius: 9px;
+  padding: 16px;
+  margin-top: 22px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.valcri-checkout-principal:hover {
+  background: #064a9f;
+}
+.valcri-checkout-aclaracion {
+  font-size: 13px;
+  color: #64718a;
+  line-height: 1.6;
+}
+.valcri-checkout-error {
+  color: #aa2222;
+  font-weight: 700;
+  font-size: 14px;
+}
+.valcri-checkout-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #e7e2dc;
+  padding: 15px 0;
+  font-size: 13px;
+}
+.valcri-checkout-item > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.valcri-checkout-item strong {
+  color: #013280;
+}
+.valcri-checkout-item b {
+  white-space: nowrap;
+}
+.valcri-checkout-total {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 20px 0;
+  color: #013280;
+  font-size: 18px;
+}
+.valcri-checkout-resumen > p {
+  font-size: 12px;
+  color: #6b7789;
+  line-height: 1.6;
+}
+.valcri-checkout-resumen > button {
+  border: 1px solid #013280;
+  border-radius: 7px;
+  background: transparent;
+  color: #013280;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+.valcri-checkout-vacio {
+  text-align: center;
+  min-height: 50vh;
+}
+.valcri-checkout-vacio a {
+  display: inline-block;
+  background: #013280;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+@media (max-width: 760px) {
+  .valcri-checkout {
+    padding: 24px 14px 70px;
+  }
+  .valcri-checkout-layout {
+    grid-template-columns: 1fr;
+  }
+  .valcri-checkout-pasos {
+    gap: 4px;
+  }
+  .valcri-checkout-pasos li {
+    font-size: 11px;
+    padding: 10px 3px;
+  }
+  .valcri-checkout-formulario,
+  .valcri-checkout-resumen {
+    padding: 20px;
+  }
+}
+/* Fase 4B: calendario y franjas horarias */
+.valcri-checkout-agenda {
+  border: 1px solid #e4e0dc;
+  border-radius: 12px;
+  padding: 18px;
+  margin: 18px 0;
+  background: #faf8f6;
+}
+.valcri-checkout-agenda h3 {
+  color: #013280;
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+.valcri-checkout-agenda p,
+.valcri-checkout-agenda small {
+  color: #67758b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.valcri-checkout-agenda > label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+  margin: 15px 0;
+}
+.valcri-checkout-agenda-etiqueta {
+  display: block;
+  font-weight: 600;
+  margin: 15px 0 9px;
+}
+.valcri-checkout-franjas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.valcri-checkout-franjas button {
+  border: 1px solid #c6ceda;
+  background: #fff;
+  color: #013280;
+  border-radius: 9px;
+  padding: 13px 7px;
+  cursor: pointer;
+  font: inherit;
+}
+.valcri-checkout-franjas button:hover,
+.valcri-checkout-franjas button.seleccionada {
+  background: #013280;
+  color: white;
+  border-color: #013280;
+}
+.valcri-checkout-orden {
+  background: #e9eff7;
+  border-radius: 8px;
+  padding: 14px;
+  color: #013280;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 430px) {
+  .valcri-checkout-franjas {
+    grid-template-columns: 1fr;
+  }
+}
