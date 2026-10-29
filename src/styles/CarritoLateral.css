@@ -202,3 +202,16 @@
     animation: none;
   }
 }
+
+.valcri-carrito-seguir {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  background: transparent;
+  color: #013280;
+  border: 1px solid #013280;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
