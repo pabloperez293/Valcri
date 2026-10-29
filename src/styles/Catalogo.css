@@ -1,0 +1,416 @@
+/* ========================================
+   VALCRI - FASE 2
+   CATEGORÍAS Y CATÁLOGO
+======================================== */
+
+.valcri-categorias,
+.valcri-productos {
+  font-family: inherit;
+  color: #013280;
+}
+
+/* CATEGORÍAS */
+
+.valcri-categorias {
+  max-width: 1440px;
+  margin: auto;
+  padding: 76px clamp(20px, 6vw, 90px) 85px;
+  background: #f5f1ee;
+}
+
+.valcri-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 26px;
+}
+
+.valcri-section-heading h2 {
+  margin: 0;
+  font-size: clamp(26px, 3vw, 38px);
+  letter-spacing: -0.04em;
+}
+
+.valcri-section-heading a {
+  color: #013280;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.valcri-section-heading a span {
+  margin-left: 8px;
+}
+
+.valcri-categorias-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.valcri-categoria-card {
+  position: relative;
+  aspect-ratio: 0.82;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #102033;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  isolation: isolate;
+  box-shadow: 0 5px 15px #001b4412;
+  transition: transform 0.25s ease;
+}
+
+.valcri-categoria-card:hover {
+  transform: translateY(-5px);
+}
+
+.valcri-categoria-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.valcri-categoria-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 30%, #000b 100%);
+  z-index: -1;
+}
+
+.valcri-categoria-card span {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 0 6px 18px;
+  text-align: center;
+}
+
+/* CATÁLOGO */
+
+.valcri-productos {
+  background: #fff;
+}
+
+.valcri-catalogo-hero {
+  background:
+    linear-gradient(90deg, #07192be8, #07192b9c),
+    url("/images/hero-carne.jpg") center / cover;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+}
+
+.valcri-catalogo-hero-inner {
+  max-width: 1440px;
+  width: 100%;
+  margin: auto;
+  padding: 44px clamp(20px, 6vw, 90px);
+}
+
+.valcri-catalogo-hero h2 {
+  color: #fff;
+  margin: 0 0 8px;
+  font-size: clamp(30px, 3.4vw, 44px);
+  letter-spacing: -0.04em;
+}
+
+.valcri-catalogo-hero p {
+  color: #f5f1ee;
+  margin: 0 0 25px;
+  font-size: 16px;
+}
+
+/* BUSCADOR */
+
+.valcri-busqueda {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border-radius: 8px;
+  max-width: 580px;
+  padding: 0 16px;
+  color: #013280;
+}
+
+.valcri-busqueda input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 17px 0;
+  background: transparent;
+  color: #013280;
+}
+
+/* CUERPO DEL CATÁLOGO */
+
+.valcri-catalogo-body {
+  max-width: 1440px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 35px;
+  padding: 40px clamp(20px, 6vw, 90px) 90px;
+}
+
+/* FILTROS LATERALES */
+
+.valcri-filtros {
+  border-right: 1px solid #e4e2df;
+  padding-right: 22px;
+}
+
+.valcri-filtros h3 {
+  font-size: 18px;
+  margin: 0 0 18px;
+}
+
+.valcri-filtros-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.valcri-filtros-lista button {
+  border: 0;
+  background: transparent;
+  text-align: left;
+  padding: 11px 12px;
+  color: #23334a;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.valcri-filtros-lista button:hover {
+  background: #f5f1ee;
+}
+
+.valcri-filtros-lista button.seleccionada {
+  background: #eae4de;
+  color: #013280;
+}
+
+/* ORDENAMIENTO */
+
+.valcri-productos-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+  color: #667085;
+  font-size: 13px;
+}
+
+.valcri-productos-toolbar label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.valcri-productos-toolbar select {
+  border: 1px solid #dedbd7;
+  background: #fff;
+  color: #013280;
+  border-radius: 7px;
+  padding: 10px;
+  max-width: 160px;
+}
+
+/* TARJETAS DE PRODUCTOS */
+
+.valcri-productos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px 20px;
+}
+
+.valcri-producto-card {
+  min-width: 0;
+}
+
+.valcri-producto-card > img {
+  width: 100%;
+  aspect-ratio: 1.18;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  background: #eae4de;
+}
+
+.valcri-producto-card h3 {
+  font-size: 17px;
+  margin: 12px 0 6px;
+  color: #132c4f;
+}
+
+.valcri-producto-precio {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 12px;
+}
+
+.valcri-producto-precio span {
+  font-size: 13px;
+  color: #677185;
+  font-weight: 500;
+}
+
+.valcri-producto-card button {
+  background: #013280;
+  color: #fff;
+  border: 0;
+  border-radius: 7px;
+  padding: 12px 14px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.valcri-producto-card button:hover {
+  background: #064aa5;
+}
+
+.valcri-demo-nota,
+.valcri-sin-resultados {
+  color: #64748b;
+  font-size: 12px;
+  margin-top: 28px;
+}
+
+.valcri-sin-resultados {
+  padding: 40px 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1050px) {
+  .valcri-categorias-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .valcri-catalogo-body {
+    grid-template-columns: 165px minmax(0, 1fr);
+    gap: 22px;
+  }
+
+  .valcri-productos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .valcri-categorias {
+    padding: 48px 18px 55px;
+  }
+
+  .valcri-section-heading h2 {
+    font-size: 25px;
+  }
+
+  .valcri-categorias-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .valcri-categoria-card {
+    border-radius: 8px;
+  }
+
+  .valcri-categoria-card span {
+    font-size: 12px;
+    padding-bottom: 12px;
+  }
+
+  .valcri-catalogo-hero {
+    min-height: 245px;
+  }
+
+  .valcri-catalogo-hero-inner {
+    padding: 40px 20px;
+  }
+
+  .valcri-catalogo-body {
+    display: block;
+    padding: 24px 16px 65px;
+  }
+
+  .valcri-filtros {
+    border-right: 0;
+    padding: 0;
+    margin-bottom: 25px;
+  }
+
+  .valcri-filtros h3 {
+    margin-bottom: 12px;
+  }
+
+  .valcri-filtros-lista {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 7px;
+    padding-bottom: 8px;
+  }
+
+  .valcri-filtros-lista button {
+    white-space: nowrap;
+    border: 1px solid #eae4de;
+    font-size: 13px;
+  }
+
+  .valcri-productos-grid {
+    gap: 20px 12px;
+  }
+
+  .valcri-producto-card h3 {
+    font-size: 14px;
+  }
+
+  .valcri-producto-precio {
+    font-size: 15px;
+  }
+
+  .valcri-producto-card button {
+    font-size: 13px;
+    padding: 11px 8px;
+  }
+
+  .valcri-productos-toolbar {
+    font-size: 12px;
+  }
+
+  .valcri-productos-toolbar label {
+    gap: 6px;
+  }
+}
