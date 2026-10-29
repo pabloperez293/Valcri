@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
-import { Search, ShoppingCart } from "lucide-react";
+import { Search } from "lucide-react";
+import SelectorPresentacion from "../components/SelectorPresentacion";
 import { categorias, productos, preciosConfirmados } from "../data/productos";
 import "../styles/Catalogo.css";
 
@@ -10,7 +11,10 @@ const moneda = (valor) =>
     maximumFractionDigits: 0,
   }).format(valor);
 
-export default function Productos({ categoriaActiva: categoriaExterna, onSeleccionar } = {}) {
+export default function Productos({
+  categoriaActiva: categoriaExterna,
+  onSeleccionar,
+} = {}) {
   const [categoriaLocal, setCategoriaLocal] = useState("todos");
   const categoriaActiva = categoriaExterna ?? categoriaLocal;
   const seleccionarCategoria = (id) => {
@@ -19,7 +23,7 @@ export default function Productos({ categoriaActiva: categoriaExterna, onSelecci
   };
   const [busqueda, setBusqueda] = useState("");
   const [orden, setOrden] = useState("popularidad");
-  const [agregados, setAgregados] = useState([]);
+  const [seleccionesPrueba, setSeleccionesPrueba] = useState([]);
 
   const filtrados = useMemo(() => {
     const consulta = busqueda.trim().toLocaleLowerCase("es-AR");
@@ -52,10 +56,9 @@ export default function Productos({ categoriaActiva: categoriaExterna, onSelecci
     });
   }, [busqueda, categoriaActiva, orden]);
 
-  const agregar = (producto) => {
-    // Confirmación visual temporal.
-    // El carrito real se desarrollará en la fase 3.
-    setAgregados((prev) => [...prev, producto.id]);
+  const guardarSeleccion = (seleccion) => {
+    setSeleccionesPrueba((actuales) => [...actuales, seleccion]);
+    // Solo estado temporal: el carrito real será una fase independiente.
   };
 
   return (
@@ -146,23 +149,28 @@ export default function Productos({ categoriaActiva: categoriaExterna, onSelecci
                   <h3>{producto.nombre}</h3>
 
                   <p className="valcri-producto-precio">
-                    {producto.precio == null ? "A confirmar" : moneda(producto.precio)}
-                    {producto.precio != null && <span> / {producto.unidad}</span>}
+                    {producto.precio == null
+                      ? "A confirmar"
+                      : moneda(producto.precio)}
+                    {producto.precio != null && (
+                      <span> / {producto.unidad}</span>
+                    )}
                   </p>
 
-                  <button type="button" disabled={producto.precio == null || !preciosConfirmados} onClick={() => agregar(producto)}>
-                    <ShoppingCart size={17} />
-
-                    {!preciosConfirmados ? "Precio a confirmar" : agregados.includes(producto.id) ? "Agregado ✓" : "Agregar"}
-                  </button>
+                  <SelectorPresentacion
+                    producto={producto}
+                    onSeleccionPreparada={guardarSeleccion}
+                  />
                 </article>
               ))}
             </div>
           )}
 
           <p className="valcri-demo-nota">
-            Precios de referencia pendientes de confirmación por VALCRI. La compra
-            permanecerá deshabilitada hasta validar los importes y conectar el carrito.
+            Precios de referencia pendientes de confirmación por VALCRI. Las
+            selecciones son pruebas y no generan pedidos. Confirmaremos los
+            precios y las preparaciones con VALCRI antes de habilitar las
+            compras.
           </p>
         </div>
       </div>

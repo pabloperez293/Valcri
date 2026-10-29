@@ -1,0 +1,86 @@
+/* Solo se aplican estilos a los nuevos selectores: no altera Catalogo.css */
+.valcri-preparacion {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 14px 15px 17px;
+  color: #013280;
+}
+.valcri-preparacion-label {
+  font-size: 13px;
+  font-weight: 600;
+}
+.valcri-preparacion select,
+.valcri-preparacion textarea {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #d5d5d5;
+  border-radius: 8px;
+  padding: 11px;
+  background: white;
+  color: #17263b;
+  font: inherit;
+  font-size: 13px;
+}
+.valcri-preparacion textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+.valcri-preparacion-cantidad {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.valcri-preparacion-cantidad button {
+  flex: 1;
+  min-width: 0;
+  height: 40px;
+  border: 0;
+  border-radius: 8px;
+  color: white;
+  background: #013280;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.valcri-preparacion-cantidad button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.valcri-preparacion-cantidad output {
+  min-width: 60px;
+  padding: 10px 8px;
+  border: 1px solid #d5d5d5;
+  border-radius: 7px;
+  text-align: center;
+  font-size: 14px;
+}
+.valcri-preparacion small {
+  color: #64748b;
+  font-size: 11px;
+  text-align: center;
+}
+.valcri-preparacion-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 13px;
+}
+.valcri-preparacion-agregar {
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-radius: 8px;
+  background: #013280;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.valcri-preparacion-mensaje {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #013280;
+}
