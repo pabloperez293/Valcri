@@ -1,16 +1,22 @@
+
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 import "../styles/Navbar.css";
 
 const links = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Productos", href: "#productos" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Inicio", href: "/" },
+  { label: "Productos", href: "/productos" },
+  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 export default function Navbar() {
+  const navigate = useNavigate();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [busqueda, setBusqueda] = useState("");
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -37,25 +43,71 @@ export default function Navbar() {
 
   const closeMenu = () => setMenuOpen(false);
 
+  const navegar = (href) => {
+    closeMenu();
+    setSearchOpen(false);
+
+    if (href.includes("#")) {
+      const [ruta, hash] = href.split("#");
+
+      navigate(ruta || "/");
+
+      // Secciones pendientes de próximas fases
+      window.requestAnimationFrame(() => {
+        document
+          .getElementById(hash)
+          ?.scrollIntoView({ behavior: "smooth" });
+      });
+    }
+  };
+
+  const buscar = (event) => {
+    event.preventDefault();
+
+    setSearchOpen(false);
+    setMenuOpen(false);
+
+    navigate("/productos");
+
+    // La búsqueda global se conectará al catálogo
+    // en una fase posterior.
+  };
+
   return (
     <header className="valcri-navbar">
       <div className="valcri-navbar-inner">
-        <a
-          href="#inicio"
+        {/* LOGO */}
+
+        <Link
+          to="/"
           className="valcri-brand"
           onClick={closeMenu}
           aria-label="VALCRI - Inicio"
         >
-          <img src="/images/logo-valcri.png " alt="Carnicería VALCRI" />
-        </a>
+          <img
+            src="/images/logo-valcri.png"
+            alt="Carnicería VALCRI"
+          />
+        </Link>
 
-        <nav className="valcri-desktop-nav" aria-label="Menú principal">
+        {/* MENÚ DESKTOP */}
+
+        <nav
+          className="valcri-desktop-nav"
+          aria-label="Menú principal"
+        >
           {links.map((link) => (
-            <a key={link.href} href={link.href}>
+            <Link
+              key={link.href}
+              to={link.href}
+              onClick={() => navegar(link.href)}
+            >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
+
+        {/* ICONOS */}
 
         <div className="valcri-navbar-actions">
           <button
@@ -115,14 +167,20 @@ export default function Navbar() {
             </svg>
           </button>
 
+          {/* BOTÓN MOBILE */}
+
           <button
             type="button"
-            className={`valcri-menu-toggle ${menuOpen ? "active" : ""}`}
+            className={`valcri-menu-toggle ${
+              menuOpen ? "active" : ""
+            }`}
             onClick={() => {
               setMenuOpen(!menuOpen);
               setSearchOpen(false);
             }}
-            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-label={
+              menuOpen ? "Cerrar menú" : "Abrir menú"
+            }
             aria-expanded={menuOpen}
             aria-controls="valcri-mobile-menu"
           >
@@ -133,14 +191,22 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* BUSCADOR */}
+
       {searchOpen && !menuOpen && (
-        <div className="valcri-search-panel">
+        <form
+          className="valcri-search-panel"
+          onSubmit={buscar}
+        >
           <input
             type="search"
             placeholder="Buscar cortes y productos..."
             aria-label="Buscar cortes y productos"
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
             autoFocus
           />
+
           <button
             type="button"
             onClick={() => setSearchOpen(false)}
@@ -148,30 +214,39 @@ export default function Navbar() {
           >
             ✕
           </button>
-        </div>
+        </form>
       )}
+
+      {/* MENÚ MOBILE */}
 
       <div
         id="valcri-mobile-menu"
-        className={`valcri-mobile-menu ${menuOpen ? "is-open" : ""}`}
+        className={`valcri-mobile-menu ${
+          menuOpen ? "is-open" : ""
+        }`}
         aria-hidden={!menuOpen}
         {...(!menuOpen ? { inert: "" } : {})}
       >
-        <nav className="valcri-mobile-links" aria-label="Menú móvil">
+        <nav
+          className="valcri-mobile-links"
+          aria-label="Menú móvil"
+        >
           {links.map((link, index) => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
-              onClick={closeMenu}
+              to={link.href}
+              onClick={() => navegar(link.href)}
               style={{ "--link-index": index }}
               tabIndex={menuOpen ? 0 : -1}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
-        <div className="valcri-mobile-footer">CARNICERÍA VALCRI</div>
+        <div className="valcri-mobile-footer">
+          CARNICERÍA VALCRI
+        </div>
       </div>
     </header>
   );

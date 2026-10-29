@@ -1,0 +1,267 @@
+
+/* ========================================
+   VALCRI - FASE 2B
+   DETALLE DE PRODUCTO
+======================================== */
+
+.valcri-detalle-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  background: rgba(0, 15, 35, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  animation: valcriOverlayIn 0.25s ease;
+}
+
+.valcri-detalle-modal {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90dvh;
+  overflow-y: auto;
+  background: #F5F1EE;
+  border-radius: 16px;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.2);
+  animation: valcriModalIn 0.35s ease;
+}
+
+.valcri-detalle-cerrar {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: #EAE4DE;
+  color: #013280;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.valcri-detalle-contenido {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  padding: 55px 35px 35px;
+}
+
+.valcri-detalle-imagen {
+  min-width: 0;
+}
+
+.valcri-detalle-imagen img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+.valcri-detalle-info {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  min-width: 0;
+}
+
+.valcri-detalle-etiqueta {
+  color: #013280;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.valcri-detalle-info h2 {
+  color: #013280;
+  font-size: clamp(27px, 3vw, 39px);
+  line-height: 1.15;
+  margin: 0 0 15px;
+}
+
+.valcri-detalle-precio {
+  color: #013280;
+  font-size: 29px;
+  font-weight: 800;
+  margin: 0 0 18px;
+}
+
+.valcri-detalle-precio span {
+  color: #657184;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.valcri-detalle-descripcion {
+  color: #526072;
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 25px;
+}
+
+.valcri-detalle-cantidad {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #013280;
+  font-weight: 600;
+}
+
+.valcri-detalle-controles {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.valcri-detalle-controles button {
+  width: 45px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  color: #013280;
+  border: 1px solid #dcd7d2;
+  cursor: pointer;
+}
+
+.valcri-detalle-controles button:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.valcri-detalle-controles button:nth-of-type(2) {
+  border-radius: 0 8px 8px 0;
+}
+
+.valcri-detalle-controles button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.valcri-detalle-controles strong {
+  width: 65px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  border-top: 1px solid #dcd7d2;
+  border-bottom: 1px solid #dcd7d2;
+  font-size: 18px;
+}
+
+.valcri-detalle-controles > span {
+  margin-left: 14px;
+}
+
+.valcri-detalle-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid #ddd7d1;
+  padding: 22px 0;
+  margin-top: 26px;
+  color: #013280;
+}
+
+.valcri-detalle-total strong {
+  font-size: 25px;
+}
+
+.valcri-detalle-agregar {
+  width: 100%;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #013280;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.valcri-detalle-agregar:hover {
+  background: #064aa5;
+}
+
+.valcri-detalle-confirmacion {
+  color: #013280;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 12px;
+  text-align: center;
+}
+
+@keyframes valcriOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes valcriModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+  .valcri-detalle-overlay {
+    padding: 10px;
+    align-items: center;
+  }
+
+  .valcri-detalle-modal {
+    max-height: 94dvh;
+    border-radius: 12px;
+  }
+
+  .valcri-detalle-contenido {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 55px 18px 25px;
+  }
+
+  .valcri-detalle-imagen img {
+    aspect-ratio: 1.4;
+  }
+
+  .valcri-detalle-info h2 {
+    font-size: 27px;
+  }
+
+  .valcri-detalle-precio {
+    font-size: 25px;
+  }
+
+  .valcri-detalle-descripcion {
+    margin-bottom: 18px;
+  }
+
+  .valcri-detalle-total {
+    margin-top: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .valcri-detalle-overlay,
+  .valcri-detalle-modal {
+    animation: none;
+  }
+}
