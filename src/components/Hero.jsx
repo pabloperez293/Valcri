@@ -1,7 +1,8 @@
+
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "../styles/Hero.css";
-
 
 export default function Hero() {
   return (
@@ -12,14 +13,19 @@ export default function Hero() {
           <br />
           <span>todos los días.</span>
         </h1>
+
         <p>
           Cortes seleccionados, frescura garantizada
-          <br className="desktop-break" /> y la calidad que nos distingue.
+          <br className="desktop-break" />
+          {" "}y la calidad que nos distingue.
         </p>
-        <a href="#productos" className="hero-button">
-          Ver productos <span aria-hidden="true">→</span>
-        </a>
+
+        <Link to="/productos" className="hero-button">
+          Ver productos
+          <span aria-hidden="true">→</span>
+        </Link>
       </div>
+
       <div
         className="hero-visual"
         role="img"

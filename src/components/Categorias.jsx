@@ -1,26 +1,35 @@
+
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { categorias } from "../data/productos";
 import "../styles/Catalogo.css";
 
-export default function Categorias({ onSeleccionar }) {
+export default function Categorias() {
   return (
-    <section className="valcri-categorias" aria-labelledby="titulo-categorias">
+    <section
+      className="valcri-categorias"
+      aria-labelledby="titulo-categorias"
+    >
       <div className="valcri-section-heading">
-        <h2 id="titulo-categorias">Nuestras categorías</h2>
+        <h2 id="titulo-categorias">
+          Nuestras categorías
+        </h2>
 
-        <a href="#productos" onClick={() => onSeleccionar("todos")}>
+        <Link to="/productos">
           Ver todas
           <span aria-hidden="true">→</span>
-        </a>
+        </Link>
       </div>
 
       <div className="valcri-categorias-grid">
         {categorias.map((categoria) => (
-          <a
-            href="#productos"
+          <Link
+            to={`/productos?categoria=${encodeURIComponent(
+              categoria.id
+            )}`}
             className="valcri-categoria-card"
             key={categoria.id}
-            onClick={() => onSeleccionar(categoria.id)}
           >
             <img
               src={categoria.imagen}
@@ -28,12 +37,13 @@ export default function Categorias({ onSeleccionar }) {
               loading="lazy"
               onError={(e) => {
                 e.currentTarget.onerror = null;
-                e.currentTarget.src = "/images/hero-carne.jpg";
+                e.currentTarget.src =
+                  "/images/hero-carne.jpg";
               }}
             />
 
             <span>{categoria.nombre}</span>
-          </a>
+          </Link>
         ))}
       </div>
     </section>
