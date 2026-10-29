@@ -46,7 +46,7 @@ export default function Navbar() {
           onClick={closeMenu}
           aria-label="VALCRI - Inicio"
         >
-          <img src="/images/logo-valcri.png" alt="Carnicería VALCRI" />
+          <img src="/images/logo-valcri.png " alt="Carnicería VALCRI" />
         </a>
 
         <nav className="valcri-desktop-nav" aria-label="Menú principal">
