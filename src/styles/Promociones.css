@@ -1,0 +1,109 @@
+.valcri-promos {
+  padding: 50px max(18px, calc((100% - 1180px) / 2));
+  background: #f5f1ee;
+  color: #013280;
+}
+.valcri-promos .valcri-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.valcri-promos-aviso {
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid #013280;
+  border-radius: 50px;
+  padding: 7px 12px;
+}
+.valcri-promos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+.valcri-promo-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px #01328012;
+}
+.valcri-promo-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  display: block;
+}
+.valcri-promo-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+}
+.valcri-promo-etiqueta {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  background: #013280;
+  color: white;
+  padding: 5px 9px;
+  border-radius: 4px;
+}
+.valcri-promo-info h3 {
+  margin: 0;
+  font-size: 17px;
+}
+.valcri-promo-info p {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.8;
+}
+.valcri-promo-info strong {
+  font-size: 23px;
+}
+.valcri-promo-info small {
+  font-size: 12px;
+  font-weight: 500;
+}
+.valcri-promo-info button {
+  width: 100%;
+  border: 0;
+  border-radius: 7px;
+  padding: 11px 8px;
+  background: #013280;
+  color: white;
+  font-weight: 700;
+}
+.valcri-promo-info button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+@media (max-width: 950px) {
+  .valcri-promos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 550px) {
+  .valcri-promos {
+    padding: 35px 16px;
+  }
+  .valcri-promos-grid {
+    gap: 10px;
+  }
+  .valcri-promo-card img {
+    height: 120px;
+  }
+  .valcri-promo-info {
+    padding: 11px;
+  }
+  .valcri-promo-info h3 {
+    font-size: 14px;
+  }
+  .valcri-promo-info strong {
+    font-size: 18px;
+  }
+  .valcri-promos-aviso {
+    font-size: 10px;
+  }
+}
