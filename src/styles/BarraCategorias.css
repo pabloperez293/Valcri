@@ -1,0 +1,247 @@
+/* =========================================
+   VALCRI - NAVEGACIÓN DE CATEGORÍAS
+   ========================================= */
+
+.valcri-categorias-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 26px;
+  padding: 12px 0 18px;
+  border-bottom: 1px solid #eae4de;
+}
+
+.valcri-categorias-nav h3 {
+  margin: 0;
+  color: #013280;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.valcri-categorias-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 10px 14px;
+  background: transparent;
+  border: 1px solid #eae4de;
+  border-radius: 8px;
+  color: #013280;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.valcri-categorias-toggle:hover {
+  background: #f5f1ee;
+}
+
+/* =========================================
+   MENÚ PANTALLA COMPLETA
+   ========================================= */
+
+.valcri-categorias-pantalla {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background: #eae4de;
+  color: #013280;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-12px);
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease,
+    transform 0.35s ease;
+}
+
+.valcri-categorias-pantalla.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* LOGO Y CERRAR */
+
+.valcri-categorias-pantalla-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-shrink: 0;
+  padding: 12px clamp(20px, 5vw, 55px);
+}
+
+.valcri-categorias-marca img {
+  width: 94px;
+  height: 94px;
+  object-fit: contain;
+}
+
+.valcri-categorias-cerrar {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: #013280;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.valcri-categorias-cerrar:hover {
+  transform: rotate(90deg);
+}
+
+/* CONTENIDO CENTRAL */
+
+.valcri-categorias-pantalla-centro {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 10px 20px;
+  overflow-y: auto;
+}
+
+.valcri-categorias-lista {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(5px, 1.2vh, 14px);
+  width: 100%;
+}
+
+/* ENLACES COMO NAVBAR PRINCIPAL */
+
+.valcri-categorias-enlace {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  padding: 3px 8px 7px;
+  background: transparent;
+  border: 0;
+  color: #013280;
+  font-family: inherit;
+  font-size: clamp(25px, 3.5vw, 46px);
+  font-weight: 650;
+  line-height: 1.15;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.valcri-categorias-enlace::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 8px;
+  right: 8px;
+  height: 3px;
+  background: #013280;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.valcri-categorias-enlace:hover {
+  transform: scale(1.055);
+}
+
+.valcri-categorias-enlace:hover::after,
+.valcri-categorias-enlace.activo::after {
+  transform: scaleX(1);
+}
+
+/* ENTRADA ESCALONADA */
+
+.valcri-categorias-pantalla.visible .valcri-categorias-enlace {
+  animation: valcri-entrada-categoria 0.45s both;
+  animation-delay: calc(var(--orden) * 45ms);
+}
+
+@keyframes valcri-entrada-categoria {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* PIE DE PANTALLA */
+
+.valcri-categorias-pantalla-footer {
+  flex-shrink: 0;
+  padding: 15px 20px 25px;
+  text-align: center;
+  color: #6d85ad;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .valcri-categorias-nav h3 {
+    font-size: 19px;
+  }
+
+  .valcri-categorias-marca img {
+    width: 82px;
+    height: 82px;
+  }
+
+  .valcri-categorias-pantalla-centro {
+    gap: 12px;
+  }
+
+  .valcri-categorias-enlace {
+    font-size: clamp(25px, 6vw, 39px);
+  }
+}
+
+@media (max-height: 650px) {
+  .valcri-categorias-marca img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .valcri-categorias-enlace {
+    font-size: 23px;
+  }
+
+  .valcri-categorias-lista {
+    gap: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .valcri-categorias-pantalla,
+  .valcri-categorias-enlace,
+  .valcri-categorias-enlace::after {
+    transition: none;
+    animation: none !important;
+  }
+}
