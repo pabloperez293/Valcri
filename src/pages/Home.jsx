@@ -1,33 +1,26 @@
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
 import Hero from "../components/Hero";
 import Categorias from "../components/Categorias";
+import { ProductosDestacados } from "../components/ProductosDestacados";
+import { BannerCompra } from "../components/BannerCompra";
+import UbicacionLocal from "../components/UbicacionLocal";
 
 export default function Home() {
   const navigate = useNavigate();
-
-  const seleccionarCategoria = (categoria) => {
-    if (categoria === "todos") {
-      navigate("/productos");
-      return;
-    }
-
+  const seleccionarCategoria = (categoria) =>
     navigate(
-      `/productos?categoria=${encodeURIComponent(categoria)}`
+      categoria === "todos"
+        ? "/productos"
+        : `/productos?categoria=${encodeURIComponent(categoria)}`,
     );
-  };
-
   return (
     <>
-      {/* FASE 1 - Portada original */}
       <Hero />
-
-      {/* FASE 2 - Categorías */}
-      <Categorias
-        onSeleccionar={seleccionarCategoria}
-      />
+      <Categorias onSeleccionar={seleccionarCategoria} />
+      <ProductosDestacados />
+      <BannerCompra />
+      <UbicacionLocal />
     </>
   );
 }

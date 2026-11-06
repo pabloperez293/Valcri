@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import CarritoLateral from "./components/CarritoLateral";
+import Footer from "./components/Footer";
 import { CarritoProvider } from "./context/CarritoContext";
 import Home from "./pages/Home";
 import ProductosPage from "./pages/ProductosPage";
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
+      <Footer />
       <CarritoLateral />
     </CarritoProvider>
   );
